@@ -1,0 +1,56 @@
+﻿
+@model PropertyViewModel
+
+@inject IUnitOfWork unitOfWork
+@{
+    var category = new SelectList(unitOfWork.Repository<Category, int>().GetAllAsync().Result, "Id", "Name");
+}
+
+<label asp-for="Image" class="col-form-label "></label>
+<input asp-for="Image" class="form-control" />
+    </div>
+<div class="form-group">
+    <label asp-for="Name" class="col-form-label"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Price" class="col-form-label"></label>
+    <input asp-for="Price" class="form-control" type="number" />
+    <span asp-validation-for="Price" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Size" class="col-form-label"></label>
+    <input asp-for="Size" class="form-control" />
+    <span asp-validation-for="Size" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Location" class="col-form-label"></label>
+    <input asp-for="Location" class="form-control" />
+    <span asp-validation-for="Location" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="NofBed" class="col-form-label"></label>
+    <input asp-for="NofBed" class="form-control" />
+    <span asp-validation-for="NofBed" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="NofBath" class="col-form-label"></label>
+    <input asp-for="NofBath" class="form-control" />
+    <span asp-validation-for="NofBath" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Category" class="col-form-label"></label>
+    <select class="form-control" asp-for="CategoryId" asp-items="@category">
+        <option value="@null">-- Select Category --</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label asp-for="Mode" class="col-form-label"></label>
+    <input asp-for="Mode" class="form-control" />
+    <span asp-validation-for="Mode" class="text-danger"></span>
+</div>
+
+

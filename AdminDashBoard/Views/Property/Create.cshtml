@@ -1,0 +1,18 @@
+﻿@model PropertyViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<form asp-action="Create" method="post" class="form-control" enctype="multipart/form-data">
+        <input hidden asp-for="PictureUrl" />
+        <partial name="_EditCreatePartial" model="Model" />
+    <br />
+    <button asp-action="Create" type="submit"  class="btn btn-outline-primary">Add</button>
+    <a asp-action="Index" class="btn btn-outline-danger">Back To List</a>
+</form>
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
+

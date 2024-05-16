@@ -1,0 +1,66 @@
+﻿@model IReadOnlyList<PropertyViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<a asp-action="Create" class="btn btn-outline-primary m-2">Add New Property</a>
+@if (Model.Any())
+{
+	<div class="container">
+		<table class="table table-hover table-striped table-bordered dt-responsive nowrap">
+			<thead class="bg-dark text-white text-center">
+				<tr>
+					<th>Id</th>
+					<th>Picture</th>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Category</th>
+ 					<th>Size</th>
+					<th>Location</th>
+					<th>NofBed</th>
+					<th>NofBath</th>
+					<th>Mode</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var Propert in Model)
+				{
+					<tr>
+						<td>@Propert.Id</td>
+						<td>
+							<img class="w-50" src="~/@Propert.PictureUrl" />
+						</td>
+						<td>@Propert.Name</td>
+						<td>@Propert.Price EGP</td>
+ 						<td>@Propert.Category.Name</td>
+ 						<td>@Propert.Size</td>
+						<td>@Propert.Location</td>
+						<td>@Propert.NofBed</td>
+						<td>@Propert.NofBath</td>
+						<td>@Propert.Mode</td>
+						<td>
+							<div class=" d-flex">
+								<a class="btn mb-2 text-warning" asp-action="Edit" asp-route-id="@Propert.Id"><i class="fas fa-pen"></i> </a>
+								<a class="btn text-danger" asp-action="Delete" asp-route-id="@Propert.Id"><i class="fas fa-trash"></i></a>
+							</div>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+
+}
+else
+{
+	<div class="mt-3 p-3 alert-warning">
+		<h2>There is no Products!</h2>
+	</div>
+}
+@section Scripts
+{
+	<partial name="_ValidationScriptsPartial" />
+}
+
+
